@@ -1,0 +1,100 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+	// вспомогательная функция для проверки рандомных массивов
+	function generateRandomNumberArray(length){
+		var arr = [];
+		var maxRandom = 9;
+		for(var i = 0; i < length; i++){
+			var randomNumber = Math.round(Math.random(maxRandom) * maxRandom);
+			arr.push(randomNumber);
+		}
+		return arr;
+	}
+
+	// a. Написать функцию, которая принимает в качестве параметра число n. Результатом работы функции является массив из N элементов со значениями 1, 2, 3… n.
+	function toGenerateArr(n){
+		var arr = [];
+		for (var i = 1; i <= n; i++) {
+			arr.push(i);
+		}
+		return arr;
+	}
+
+	//b. Написать функцию, которая принимает массив чисел. Результатом работы функции является сумма чисел этого массива.
+	function sumElementsArray(arr){
+		var sum = 0;
+		for (var i = 0; i < arr.length; i++) {
+			sum = sum + arr[i]
+		}
+		return sum;
+	}
+
+	//c. Написать функцию, которая на вход получает массив целых чисел, и в качестве результата возвращает максимальное число.
+	function maxElementsArray(arr){
+		var max = arr[0];
+		for (var i = 1; i < arr.length; i++) {
+			if (max < arr[i]){
+				max = arr[i];
+			}
+		}
+		return max;
+	}
+
+	//d. Написать функцию, которая на вход получает массив целых чисел, и в качестве результата возвращает минимальное число.
+	function minElementsArray(arr){
+		var min = arr[0];
+		for (var i = 1; i < arr.length; i++) {
+			if (min > arr[i]){
+				min = arr[i];
+			}
+		}
+		return min;
+	}
+
+	//f. Написать функцию, которая на вход получает массив целых чисел, и в качестве результата возвращает только четные числа из этого массива. Чтобы определить четность числа, воспользуйтесь оператором для подсчета остатка от деления: x % 2. Если остаток от деления числа на 2 равен 0, число будет четное.
+	function evenNumbersArray(arr){
+		var evenArr = [];
+		for (var i = 0; i < arr.length; i++) {
+			if (arr[i] % 2 == 0) {
+				evenArr.push(arr[i])
+			} else {
+			 	continue;
+			}
+		}
+		return evenArr;
+	}
+
+	do{
+		var n = +prompt("a) Введите n (>0) - размер массива, элементы которого будут иметь значения 1, 2, 3… n");	
+	}while(isNaN(n) || (n <= 0))
+	var arrGeneration_1_n = toGenerateArr(n);
+	alert("а) Получилось вот что: " + arrGeneration_1_n);
+
+	// случайный массив для тестирования
+	do{
+		var lengthRandomArr = +prompt("Введите n (>0) - размер рандомного массива для тестирования следующих функций");	
+	}while(isNaN(lengthRandomArr) || (lengthRandomArr <= 0))
+	var arrGeneration = generateRandomNumberArray(lengthRandomArr);
+	alert("Рандомный массив для тестирования: " + arrGeneration);
+
+	alert("b) Теперь посчитаем сумму элементов массива. Например, вот этого (из предыдущего примера): " + arrGeneration);
+	var sumElemens = sumElementsArray(arrGeneration);
+	alert("b) Сумма элементов массива: " + sumElemens);	
+
+
+	alert("c) Теперь найдем в массиве максимальное число. Возьмем для примера предыдущий массив: " + arrGeneration);
+	var maxElement = maxElementsArray(arrGeneration);
+	alert("c) Максимальное число в массиве: " + maxElement);	
+
+
+	alert("d) Теперь найдем в массиве минимальное число. Опять же на примере предыдущего массива: " + arrGeneration);
+	var minElement = minElementsArray(arrGeneration);
+	alert("d) Минимальное число в массиве: " + minElement);	
+
+	alert("f) Теперь выведем только четные числа массива (на примере предыдущего массива): " + arrGeneration);
+	var evenNumbers = evenNumbersArray(arrGeneration);
+	alert("f) Получился такой 'четный' массив: " + evenNumbers);
+
+	document.write("<b>Поигрались и хватит. Спасибо за терпение. Проверь еще, пожалуйста, следующие упражнения!</b>");
+
+</script>

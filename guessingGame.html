@@ -1,0 +1,47 @@
+<meta charset="utf-8">
+<script type="text/javascript">
+
+	function runQuestion(question){
+		var text = [];
+		var instruction = "";
+		if (question == 1) {
+			text = ["сон", "сны"];
+			instruction = "Что можно увидеть с закрытыми глазами?";	
+		} else if (question == 2) {
+			text = ["сухих", "не мокрых", "не влажных"];
+			instruction = "Каких камней нет ни в одном море?";
+		} else if (question == 3) {
+			text = ["дно", "низ"];
+			instruction = "Что останется в коробке, если вынуть спички?";
+		} else if (question == 4) {
+			text = ["лук", "луковица"];
+			instruction = "Сидит дед, во сто шуб одет. Кто его раздевает, тот слезы проливает.";
+		}
+		return [text, instruction];
+	}
+
+	alert("Дорогой друг, отгадай, пожалуйста, несколько загадок!");
+	var score=0;
+	var maxQuestion = 4;
+	for (var question = 1; question <= maxQuestion; question++) {
+		var numberQuestion = runQuestion(question);
+		var text = numberQuestion[0];
+		var instruction = numberQuestion[1];
+		var userText = prompt("Загадка № " + question + ". \nЧтобы сдаться, нажми на кнопку ОТМЕНА.\n\n" + instruction);
+		if (userText == null){
+			document.write("<b>Ты прекратил игру, а очень жаль!</b><br>");
+			break;
+		} else userText = userText.toLowerCase();
+
+		if (userText == text[0] || userText == text[1]) {
+			alert("Поздравляю, ты справился с загадкой № " + question + "!");
+			score++; 
+		} else {
+			alert("Нет, ответ неверный :( \n -" + text[0] + ".");
+		}
+	}
+
+
+	document.write("<b>При этом ты покорил " + score + " загадки (-у/-ок)!</b><br>(то бишь дал " + (score*100/4) + "% правильных ответов!)");
+
+</script>
